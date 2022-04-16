@@ -18,10 +18,10 @@ public class Scheduler {
 	ShedLockRepo shedLockRepo;
 	
 	@Scheduled(cron = "0/5 * * ? * *")
-	@BlockerTask(nomeTask = "coisa", bloquearNoMaximo = "PT1M")
+	@BlockerTask(nomeTask = "Minha tarefa", bloquearNoMaximo = "PT1M")
 	public void minhaTask() {
 		System.out.println("Teste");
-		blocker.unBlock("2");
-		//blocker.unBlock("Minha tarefa");
+		
+		blocker.unBlock("Minha tarefa");
 	}
 }
