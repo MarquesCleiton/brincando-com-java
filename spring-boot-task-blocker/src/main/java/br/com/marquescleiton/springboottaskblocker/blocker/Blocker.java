@@ -13,9 +13,6 @@ import br.com.marquescleiton.springboottaskblocker.jpa.ShedLockRepo;
 
 @Component
 public class Blocker {
-
-	private boolean blocked = !true;
-	private ShedLockJpa shedLock;
 	
 	@Autowired
 	private ShedLockRepo shedRepo;
@@ -37,8 +34,8 @@ public class Blocker {
 
 		LocalDateTime horaAtual = LocalDateTime.now();
 		LocalDateTime lockUntil = horaAtual.plusSeconds(iso8601ToSeconds(lockAtMostFor));
-
-		shedLock = new ShedLockJpa(); 
+		
+		ShedLockJpa shedLock = new ShedLockJpa(); 
 		shedLock = shedRepo.findByName(nomeTask);
 		
 		if (shedLock == null) {
@@ -46,8 +43,7 @@ public class Blocker {
 			shedLock.setName(nomeTask);
 		}
 		
-		if (shedLock.getLock_until() == null || horaAtual.isAfter(shedLock.getLock_until())) {
-			blocked = !false;
+		if (isBlocked(shedLock) == false) {
 			shedLock.setLocked_at(horaAtual);
 			shedLock.setLock_until(lockUntil);
 			try {
@@ -56,8 +52,6 @@ public class Blocker {
 				e.getStackTrace();
 			}
 			shedRepo.save(shedLock);
-		}else {
-			blocked = !true;
 		}
 
 		return this;
@@ -66,14 +60,12 @@ public class Blocker {
 	public void unBlock(String nomeTask) {
 		
 		LocalDateTime horaAtual = LocalDateTime.now();
+		ShedLockJpa shedLock = shedRepo.findByName(nomeTask);
 		
-		shedLock = shedRepo.findByName(nomeTask);
-		
-		if (shedLock != null && (shedLock.getLock_until() != null || horaAtual.isBefore(shedLock.getLock_until()))) {
+		if (isBlocked(shedLock) == true) {
 			shedLock.setLock_until(horaAtual);
 			shedLock = shedRepo.save(shedLock);
-		}
-		
+		}	
 	}
 
 	private static long iso8601ToSeconds(String iso8601) {
@@ -82,14 +74,38 @@ public class Blocker {
 	}
 	
 	/**
+	 * Verifica na base se a tarefa com o nome especificado em nomeTask
+	 * está bloqueada ou não
 	 * 
-	 * @return Retorta TRUE se estiver desbloqueado e FALSE se estiver bloqueado
+	 * @param nomeTask : nome da tarefa que será feito a busca
+	 * 
+	 * @return TRUE se estiver BLOQUEADO </br> 
+	 * FALSE se estiver DESBLOQUEADO
+	 * 
 	 */
-	public boolean isBlocked() {
-		return this.blocked;
+	public boolean isBlocked(String nomeTask) {
+		
+		ShedLockJpa shedLock = shedRepo.findByName(nomeTask);
+				
+		return isBlocked(shedLock);
 	}
 	
-	public ShedLockJpa getShedLock() {
-		return this.shedLock;
+	/**
+	 * Verifica se a tarefa dentro na entidade shedLock se encontra bloqueada ou não
+	 * 
+	 * @param shedLock : entidade com a tarefa
+	 * 
+	 * @return TRUE se estiver BLOQUEADO </br> 
+	 * FALSE se estiver DESBLOQUEADO
+	 * 
+	 */
+	private boolean isBlocked (ShedLockJpa shedLock) {
+		LocalDateTime horaAtual = LocalDateTime.now();
+		
+		if (shedLock == null || shedLock.getLock_until() == null || horaAtual.isAfter(shedLock.getLock_until())) {
+			return false;
+		}
+		
+		return true;
 	}
 }

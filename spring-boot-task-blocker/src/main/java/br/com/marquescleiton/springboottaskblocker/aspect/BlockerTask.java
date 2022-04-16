@@ -8,6 +8,9 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface BlockerTask {
+
 	String nomeTask() default "";
 	String bloquearNoMaximo() default "PT10S";
+	String bloquearPeloMenos() default "";
+	boolean desbloquearNoFim () default false;
 }
