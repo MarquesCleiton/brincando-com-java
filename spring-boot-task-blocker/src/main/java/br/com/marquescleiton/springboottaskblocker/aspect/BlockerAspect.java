@@ -1,7 +1,6 @@
 package br.com.marquescleiton.springboottaskblocker.aspect;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -31,10 +30,16 @@ public class BlockerAspect {
 	private Object aroundAdvice(ProceedingJoinPoint point) throws Throwable {
 		System.out.println("Executando @Around");
 		BlockerTask myAnnotation = myAnnotation(point);
-
-		if (blocker.isBlocked(myAnnotation.nomeTask()) == false) {
-			blocker.block(myAnnotation.nomeTask(), myAnnotation.bloquearNoMaximo());
-			return point.proceed();
+		
+		try {
+			
+			if (blocker.isBlocked(myAnnotation.nomeTask()) == false) {
+				blocker.block(myAnnotation.nomeTask(), myAnnotation.bloquearNoMaximo());
+				return point.proceed();
+			}
+			
+		}catch (Exception e) {
+			System.out.println(e.getStackTrace());
 		}
 		return null;
 	}
