@@ -8,9 +8,9 @@ Criei esse pequeno repositório com o propósito de expor e salvar pequenos proj
 ---
 ### Indice
 
-+ [1 - Spring boot task blocker](#1-Spring-boot-task-blocker)
-+ [2 - mapeia-campos-entidade](#2-mapeia-campos-entidade)
-+ [3 - teste-exception](#3-teste-exception)
++ [1 - Spring boot task blocker](#1---Spring-boot-task-blocker)
++ [2 - mapeia-campos-entidade](#2---mapeia-campos-entidade)
++ [3 - teste-exception](#3---teste-exception)
 ---
 
 ## 1 - Spring boot task blocker
