@@ -16,6 +16,7 @@ Criei esse pequeno repositório com o propósito de expor e salvar pequenos proj
 ## 1 - Spring boot task blocker
 
 **Aplicação de controle de tarefas agendadas** 📅
+
 Vamos supor que você queira que sua aplicação execute um processamento, ou tarefa, a cada 10 minutos, ou no período que você preferir, esse é o projeto que você procura!!!
 
 Shedlock (https://github.com/lukas-krecan/ShedLock) é uma biblioteca Java que garante que nossas tarefas agendadas, um simples método(), sejam executadas apenas uma 1 única vez por tempo. Ele garante que mesmo com várias instâncias com a nossa aplicação sendo executadas ao mesmo tempo, a nossa tarefa será executada apenas 1 vez por tempo.
