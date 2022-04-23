@@ -40,5 +40,3 @@ O Shedlock bloqueia a tarefa pelo período que nós definimos e caso o processam
 
 ---
 ## 2 - mapeia-campos-entidade
-
-## 3 - teste-exception
