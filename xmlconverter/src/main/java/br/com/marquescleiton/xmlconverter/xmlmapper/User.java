@@ -1,4 +1,4 @@
-package br.com.marquescleiton.xmlconverter.xmlavromapper;
+package br.com.marquescleiton.xmlconverter.xmlmapper;
 
 import br.com.marquescleiton.xmlconverter.annotation.XmlMapper;
 
