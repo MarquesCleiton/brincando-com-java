@@ -30,5 +30,4 @@ public abstract class XmlConverter {
         Constructor<?> constructor = clazz.getConstructor();
         return constructor.newInstance();
     }
-
 }

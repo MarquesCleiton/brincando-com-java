@@ -82,7 +82,6 @@ public class XmlUtil2 extends XmlConverter{
                 return xmlMapper.value();
             }
         }catch (NoSuchFieldException ignored){}
-
         return null;
     }
 }
