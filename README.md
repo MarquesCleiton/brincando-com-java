@@ -1,18 +1,3 @@
-
-# Brincando com Java  
-  
-Oi! Meu nome é Cleiton!  
-Criei esse pequeno repositório com o propósito de expor e salvar pequenos projetos que desenvolvi e que me ajudaram a solucionar alguns desafios que me surgiram durante minha formação acadêmica e minha carreira de desenvolvedor. Apesar de serem pequenos projetos eles contêm infinitas possibilidades de aplicação!!!  
-  
-**Espero que gostem! 😁**  
-  
----  
-### Indice  
-  
-+ [1 -  Spring  boot  task  blocker](#1---Spring-boot-task-blocker)  
-+ [2 - mapeia-campos-entidade](#2---mapeia-campos-entidade)  
----  
-  
 ## 1 -  Spring  boot  task  blocker  
   
 **Aplicação de controle de tarefas agendadas** 📅  
@@ -37,6 +22,4 @@ O Shedlock bloqueia a tarefa pelo período que nós definimos e caso o processam
 + AOP: Programaçãoorientada a aspecto, para implementar funções de bloqueio e desbloqueio antes e depois da execução de cada uma de nossas tarefas.  
   
 ![Paralelismo](https://raw.githubusercontent.com/MarquesCleiton/brincando-com-java/main/spring-boot-task-blocker/imgs/2-paralelismo.png)  
-  
----  
-## 2 - mapeia-campos-entidade
+
