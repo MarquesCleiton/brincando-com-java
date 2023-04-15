@@ -1,9 +1,0 @@
-{"namespace": "br.com.marquescleiton.xmlconverter.avro.user",
- "type": "record",
- "name": "UserAvro",
- "fields": [
-     {"name": "name", "type": "string"},
-     {"name": "favorite_number",  "type": ["int", "null"]},
-     {"name": "favorite_color", "type": ["string", "null"]}
- ]
-}
